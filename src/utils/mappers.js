@@ -6,8 +6,8 @@ export function mapPlayer(row) {
         id: Number(row.ID),
         teamNumber: Number(row.TeamNumber),
         position: row.Position?.trim() ?? "",
-        fullName: row.fullName?.trim() ?? "",
-        teamId: Number(row.teamID)
+        fullName: row.FullName?.trim() ?? "",
+        teamId: Number(row.TeamID)
     }
 }
 
