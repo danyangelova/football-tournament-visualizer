@@ -1,22 +1,43 @@
 import { useEffect } from "react";
-import { fetchTextFile } from "./services/fetchTextFile";
-import { parseCSV } from "./utils/parseCSV";
-import { mapperTests } from "./tests.js";
+// import { Route, Routes } from "react-router-dom";
+
+import "./style/style.css";
+import { buildDataStore } from "./services/buildDataStore";
+
+// import Home from "./pages/Home.jsx";
+// import MatchDetails from "./pages/MatchDetails.jsx";
+// import TeamDetails from "./pages/TeamDetails.jsx";
 
 export default function App() {
    useEffect(() => {
-      async function test() {
-         const text = await fetchTextFile("/data/players.csv");
-         // console.log(text);
-         const rows = parseCSV(text);
-         // console.log(rows);
-         // console.log("first row:", rows[0]);
+      async function testLoad() {
+         try {
+            const store = await buildDataStore();
+
+            console.log("FULL STORE:", store);
+            console.log("teams:", store.teams);
+            console.log("players:", store.players);
+            console.log("matches:", store.matches);
+            console.log("records:", store.records);
+            
+            console.log("teamsById:", store.teamsById);
+            console.log("playersById:", store.playersById);
+            console.log("matchesById:", store.matchesById);
+
+            console.log("playersByTeamId:", store.playersByTeamId);
+            console.log("recordsByMatchId:", store.recordsByMatchId);
+         } catch (error) {
+            console.error("loadAllData failed:", error);
+         }
       }
-
-      test().catch(console.error);
+      testLoad();
    }, []);
 
-   useEffect(() => {
-      mapperTests(); 
-   }, []);
+   // return (
+   // <Routes>
+   //    <Route path="/" element={<Home />} />
+   //    <Route path="/matches" element={<MatchDetails />} />
+   //    <Route path="/teams" element={<TeamDetails />} />
+   // </Routes>
+   // );
 }
