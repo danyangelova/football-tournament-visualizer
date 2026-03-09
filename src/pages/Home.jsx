@@ -4,41 +4,6 @@ import { selectHomeMatches } from "../services/selectors";
 import { DataContext } from "../context/DataContext";
 import { Link } from "react-router-dom";
 
-// const matches = [
-//    {
-//       date: "14 Jun 2024",
-//       homeTeam: "Germany",
-//       homeGroup: "Group A",
-//       awayTeam: "Scotland",
-//       awayGroup: "Group A",
-//       score: "5 - 1",
-//    },
-//    {
-//       date: "15 Jun 2024",
-//       homeTeam: "Hungary",
-//       homeGroup: "Group A",
-//       awayTeam: "Switzerland",
-//       awayGroup: "Group A",
-//       score: "1 - 3",
-//    },
-//    {
-//       date: "14 Jun 2024",
-//       homeTeam: "Germany",
-//       homeGroup: "Group A",
-//       awayTeam: "Scotland",
-//       awayGroup: "Group A",
-//       score: "5 - 1",
-//    },
-//    {
-//       date: "15 Jun 2024",
-//       homeTeam: "Hungary",
-//       homeGroup: "Group A",
-//       awayTeam: "Switzerland",
-//       awayGroup: "Group A",
-//       score: "1 - 3",
-//    },
-// ];
-
 export default function Home() {
    const state = useContext(DataContext);
 

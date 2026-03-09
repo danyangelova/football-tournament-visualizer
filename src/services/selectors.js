@@ -1,14 +1,4 @@
 
-// [
-//     {
-//         date,
-//         homeTeam,
-//         homeGroup,
-//         awayTeam,
-//         awayGroup,
-//         score
-//     }
-// ]
 export function selectHomeMatches(state) {
     return state.matches.map((match) => {
         const homeTeam = state.teamsById[match.teamAId];
@@ -26,26 +16,7 @@ export function selectHomeMatches(state) {
     });
 }
 
-// {
-//     match: {
-//         date,
-//             homeTeam,
-//             awayTeam,
-//             score
-//     },
-//     homeLineup: {
-//         goalkeeper,
-//             defenders,
-//             midfielders,
-//             forwards
-//     },
-//     awayLineup: {
-//         goalkeeper,
-//             defenders,
-//             midfielders,
-//             forwards
-//     }
-// }
+
 export function selectMatchDetails(state, matchId) {
     const matchData = state.matchesById[matchId];
 
@@ -73,16 +44,7 @@ export function selectMatchDetails(state, matchId) {
     };
 }
 
-// {
-//     team: {
-//         name,
-//             manager,
-//             group
-//     },
-//     roster: [
-//         { number, player, position }
-//     ]
-// }
+
 export function selectTeamDetails(state, teamId) {
     const teamData = state.teamsById[teamId];
     const players = state.playersByTeamId[teamId] || [];

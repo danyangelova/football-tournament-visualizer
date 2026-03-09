@@ -4,17 +4,6 @@ import { useParams } from "react-router-dom";
 import { DataContext } from "../context/DataContext";
 import { selectTeamDetails } from "../services/selectors";
 
-// const team = {
-//    name: "Germany",
-//    manager: "Julian Nagelsmann",
-//    group: "A",
-// };
-
-// const roster = [
-//    { number: 1, player: "Manuel Neuer", position: "GK" },
-//    { number: 2, player: "Antonio Rüdiger", position: "DF" },
-// ];
-
 export default function TeamDetails() {
    const state = useContext(DataContext);
    const { teamId } = useParams();

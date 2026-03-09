@@ -5,27 +5,6 @@ import { DataContext } from "../context/DataContext";
 import { selectMatchDetails } from "../services/selectors";
 import { Link } from "react-router-dom";
 
-// const match = {
-//    date: "14 Jun 2024",
-//    homeTeam: "Germany",
-//    awayTeam: "Scotland",
-//    score: "5 - 1",
-// };
-
-// const homeLineup = {
-//    goalkeeper: ["Manuel Neuer"],
-//    defenders: ["Antonio Rüdiger", "Jonathan Tah", "David Raum"],
-//    midfielders: ["Pascal Groß", "İlkay Gündoğan", "Jamal Musiala"],
-//    forwards: ["Kai Havertz", "Leroy Sané"],
-// };
-
-// const awayLineup = {
-//    goalkeeper: ["Angus Gunn"],
-//    defenders: ["Jack Hendry", "Kieran Tierney", "Andrew Robertson"],
-//    midfielders: ["Billy Gilmour", "Scott McTominay", "Callum McGregor"],
-//    forwards: ["Lyndon Dykes", "Ryan Christie"],
-// };
-
 export default function MatchDetails() {
    const state = useContext(DataContext);
    const { matchId } = useParams();
