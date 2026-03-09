@@ -1,4 +1,3 @@
-
 export function parseScore(scoreStr) {
     if (scoreStr == null) return null;
 
@@ -8,8 +7,8 @@ export function parseScore(scoreStr) {
     const parts = str.split("-");
     if (parts.length !== 2) return null;
 
-    const a = Number(parts[0]);
-    const b = Number(parts[1]);
+    const a = parseInt(parts[0], 10);
+    const b = parseInt(parts[1], 10);
 
     return { a, b };
 }
