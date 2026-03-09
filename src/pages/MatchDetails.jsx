@@ -1,27 +1,37 @@
+import { useParams } from "react-router-dom";
 import Layout from "../components/layout/Layout";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
+import { selectMatchDetails } from "../services/selectors";
+import { Link } from "react-router-dom";
 
-const match = {
-   date: "14 Jun 2024",
-   homeTeam: "Germany",
-   awayTeam: "Scotland",
-   score: "5 - 1",
-};
+// const match = {
+//    date: "14 Jun 2024",
+//    homeTeam: "Germany",
+//    awayTeam: "Scotland",
+//    score: "5 - 1",
+// };
 
-const homeLineup = {
-   goalkeeper: ["Manuel Neuer"],
-   defenders: ["Antonio Rüdiger", "Jonathan Tah", "David Raum"],
-   midfielders: ["Pascal Groß", "İlkay Gündoğan", "Jamal Musiala"],
-   forwards: ["Kai Havertz", "Leroy Sané"],
-};
+// const homeLineup = {
+//    goalkeeper: ["Manuel Neuer"],
+//    defenders: ["Antonio Rüdiger", "Jonathan Tah", "David Raum"],
+//    midfielders: ["Pascal Groß", "İlkay Gündoğan", "Jamal Musiala"],
+//    forwards: ["Kai Havertz", "Leroy Sané"],
+// };
 
-const awayLineup = {
-   goalkeeper: ["Angus Gunn"],
-   defenders: ["Jack Hendry", "Kieran Tierney", "Andrew Robertson"],
-   midfielders: ["Billy Gilmour", "Scott McTominay", "Callum McGregor"],
-   forwards: ["Lyndon Dykes", "Ryan Christie"],
-};
+// const awayLineup = {
+//    goalkeeper: ["Angus Gunn"],
+//    defenders: ["Jack Hendry", "Kieran Tierney", "Andrew Robertson"],
+//    midfielders: ["Billy Gilmour", "Scott McTominay", "Callum McGregor"],
+//    forwards: ["Lyndon Dykes", "Ryan Christie"],
+// };
 
 export default function MatchDetails() {
+   const state = useContext(DataContext);
+   const { matchId } = useParams();
+
+   const { match, homeLineup, awayLineup } = selectMatchDetails(state, Number(matchId));
+
    return (
       <Layout>
          <main className="match-layout">
@@ -42,8 +52,9 @@ export default function MatchDetails() {
 
                <div className="lineups">
                   <div className="lineup-card">
-                     <h2>Germany</h2>
-
+                     <h2>
+                        <Link to={`/teams/${match.homeTeamId}`}>{match.homeTeam}</Link>
+                     </h2>
                      <div className="position-group">
                         <h4>Goalkeeper</h4>
                         <ul>
@@ -52,7 +63,6 @@ export default function MatchDetails() {
                            ))}
                         </ul>
                      </div>
-
                      <div className="position-group">
                         <h4>Defenders</h4>
                         <ul>
@@ -61,7 +71,6 @@ export default function MatchDetails() {
                            ))}
                         </ul>
                      </div>
-
                      <div className="position-group">
                         <h4>Midfielders</h4>
                         <ul>
@@ -70,7 +79,6 @@ export default function MatchDetails() {
                            ))}
                         </ul>
                      </div>
-
                      <div className="position-group">
                         <h4>Forwards</h4>
                         <ul>
@@ -82,7 +90,9 @@ export default function MatchDetails() {
                   </div>
 
                   <div className="lineup-card">
-                     <h2>Scotland</h2>
+                     <h2>
+                        <Link to={`/teams/${match.awayTeamId}`}>{match.awayTeam}</Link>
+                     </h2>
 
                      <div className="position-group">
                         <h4>Goalkeeper</h4>

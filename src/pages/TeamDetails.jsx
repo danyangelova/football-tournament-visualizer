@@ -1,17 +1,26 @@
 import Layout from "../components/layout/Layout";
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { DataContext } from "../context/DataContext";
+import { selectTeamDetails } from "../services/selectors";
 
-const team = {
-   name: "Germany",
-   manager: "Julian Nagelsmann",
-   group: "A",
-};
+// const team = {
+//    name: "Germany",
+//    manager: "Julian Nagelsmann",
+//    group: "A",
+// };
 
-const roster = [
-   { number: 1, player: "Manuel Neuer", position: "GK" },
-   { number: 2, player: "Antonio Rüdiger", position: "DF" },
-];
+// const roster = [
+//    { number: 1, player: "Manuel Neuer", position: "GK" },
+//    { number: 2, player: "Antonio Rüdiger", position: "DF" },
+// ];
 
 export default function TeamDetails() {
+   const state = useContext(DataContext);
+   const { teamId } = useParams();
+
+   const { team, roster } = selectTeamDetails(state, Number(teamId));
+
    return (
       <Layout>
          <main className="team-layout">
@@ -25,10 +34,12 @@ export default function TeamDetails() {
                   <h2>{team.name}</h2>
                   <div className="team-details">
                      <span>
-                        <strong>Manager:</strong>{team.manager}
+                        <strong>Manager:</strong>
+                        {team.manager}
                      </span>
                      <span>
-                        <strong>Group:</strong>{team.group}
+                        <strong>Group:</strong>
+                        {team.group}
                      </span>
                   </div>
                </div>
